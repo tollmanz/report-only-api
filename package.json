@@ -1,0 +1,30 @@
+{
+  "name": "report-only-api",
+  "version": "0.0.1",
+  "description": "API for Content Security Policy reports",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tollmanz/report-only-api.git"
+  },
+  "keywords": [
+    "content",
+    "security",
+    "policy",
+    "csp",
+    "tls"
+  ],
+  "author": "Zack Tollman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tollmanz/report-only-api/issues"
+  },
+  "homepage": "https://github.com/tollmanz/report-only-api#readme",
+  "dependencies": {
+    "bunyan": "^1.4.0",
+    "hapi": "^8.8.0"
+  }
+}
