@@ -1,0 +1,28 @@
+[
+  {
+    date: "2015-07-18T14:25:23Z",
+    tag: [
+      "style"
+    ]
+    csp-report: {
+      "document-uri": "http://example.com/signup.html",
+      "referrer": "",
+      "blocked-uri": "http://example.com/css/style.css",
+      "violated-directive": "style-src cdn.example.com",
+      "original-policy": "default-src 'none'; style-src cdn.example.com; report-uri /_/csp-reports"
+    }
+  },
+  {
+    date: "2015-07-17T09:31:56Z",
+    tag: [
+      "style"
+    ]
+    csp-report: {
+      "document-uri": "http://example.com/signup.html",
+      "referrer": "",
+      "blocked-uri": "http://example.com/css/style.css",
+      "violated-directive": "style-src cdn.example.com",
+      "original-policy": "default-src 'none'; style-src cdn.example.com; report-uri /_/csp-reports"
+    }
+  }
+]

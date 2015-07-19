@@ -1,0 +1,147 @@
+#%RAML 0.8
+---
+title: Report Only
+version: v1
+baseUri: https://www.mydomain.com/{version}
+
+traits:
+  - orderable:
+      queryParameters:
+        orderby:
+          description: |
+            Order by field: <<fieldsList>>
+          type: string
+          required: false
+          default: |
+            <<defaultOrderBy>>
+        order:
+          description: Order
+          enum: [desc, asc]
+          default: desc
+          required: false
+  - pageable:
+      queryParameters:
+        offset:
+          description: The number of results pages to skip
+          type: integer
+          required: false
+          example: 5
+          default: 0
+        limit:
+          description: The number of results to return
+          type: integer
+          required: false
+          example: 20
+          default: 10
+  - filterable:
+      queryParameters:
+        filter:
+          description: |
+            JSON array [{"field1", "value1", "operator1"}], [{"field2", "value2", "operator2"}],...,[{"fieldN", "valueN", "operatorN"}] <<description>>
+          example: |
+            <<example>>
+
+schemas:
+  - report: |
+      {
+        "$schema": "http://json-schema.org/schema",
+        "type": "object",
+        "description": "A Content Security Policy violation report",
+        "properties": {
+          "csp-report": "test"
+        },
+        "required": []
+      }
+
+resourceTypes:
+  - collection:
+      get:
+        description: Get a list of <<resourcePathName>>.
+        queryParameters:
+          filter:
+            description: Filter <<resourcePathName>> by specific criteria
+            type: string
+            default:
+        responses:
+          200:
+            body:
+              application/json:
+                schema: <<resourcePathName|!pluralize>>
+                example: |
+                  <<exampleCollection>>
+      post:
+        description: Add a new <<resourcePathName|!singularize>> to the list.
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: |
+                  <<exampleItem>>
+
+  - collection-item:
+      description: An entity representing an individual <<resourcePathName|!singularize>>
+      get:
+        description: Retrieve a <<resourcePathName|!singularize>>
+        responses:
+          200:
+            body:
+              application/json:
+                schema: <<resourcePathName|!singularize>>
+                example: |
+                  <<exampleItem>>
+
+      put:
+        description: Update a <<resourcePathName|!singularize>>
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: |
+                  {
+                    message: "<<resourcePathName|!singularize>> updated"
+                  }
+
+      delete:
+        description: Delete a <<resourcePathName|!singularize>>
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: |
+                  {
+                    message: "<<resourcePathName|!singularize>> deleted"
+                  }
+
+/reports:
+  is: [
+    pageable,
+    orderable: {
+      fieldsList: "date, referrer",
+      defaultOrderBy: "date"
+    },
+    filterable: {
+      description: Filter results by searching certain fields,
+      example: "[\"type\", \"image\", \"=\"]"
+    }
+  ]
+  type:
+    collection:
+      exampleCollection: !include report-collection.sample
+      exampleItem: !include report-get.sample
+  get:
+  post:
+
+  /{reportId}:
+    description: The report ID
+    type:
+      collection-item:
+        exampleItem: !include report-get.sample
+    get:
+    put:
+    delete:
