@@ -1,0 +1,8 @@
+{
+  "connections": [
+    {
+      "port": 9000,
+      "labels": ["api"]
+    }
+  ]
+}

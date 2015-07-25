@@ -1,22 +1,8 @@
 'use strict';
 
 var Hapi = require('hapi');
+var Glue = require('glue');
 
-// Create a server with a host and port
-var server = new Hapi.Server();
-server.connection({
-    host: 'localhost',
-    port: 8000
+Glue.compose(require('./config/manifest.json'), function (err, server) {
+  server.start(function (err) {});
 });
-
-// Add the route
-server.route({
-    method: 'GET',
-    path: '/hello',
-    handler: function (request, reply) {
-        reply('hello world');
-    }
-});
-
-// Start the server
-server.start();

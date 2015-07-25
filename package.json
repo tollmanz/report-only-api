@@ -25,6 +25,7 @@
   "homepage": "https://github.com/tollmanz/report-only-api#readme",
   "dependencies": {
     "bunyan": "^1.4.0",
+    "glue": "^2.1.1",
     "hapi": "^8.8.0"
   }
 }
