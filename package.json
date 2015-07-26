@@ -4,7 +4,7 @@
   "description": "API for Content Security Policy reports",
   "main": "app.js",
   "scripts": {
-    "test": "test"
+    "test": "./node_modules/lab/bin/lab -c"
   },
   "repository": {
     "type": "git",
@@ -28,5 +28,9 @@
     "glue": "^2.1.1",
     "hapi": "^8.8.0",
     "joi": "^4.9.0"
+  },
+  "devDependencies": {
+    "code": "^1.4.1",
+    "lab": "^5.13.0"
   }
 }

@@ -13,4 +13,6 @@ Glue.compose(require('./config/manifest.json'), function (err, server) {
   if (!module.parent) {
     server.start(function (err) {});
   }
+
+  module.exports = server;
 });
