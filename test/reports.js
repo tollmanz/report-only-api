@@ -17,7 +17,7 @@ lab.experiment('Reports Endpoint', function() {
       Code.expect(result.data).to.be.instanceof(Array);
       Code.expect(result.data).to.have.length(2);
 
-      Code.expect(result.meta).to.a.object();
+      Code.expect(result.meta).to.be.a.object();
 
       done();
     });
