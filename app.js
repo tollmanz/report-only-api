@@ -5,7 +5,12 @@ var Glue = require('glue');
 var reportsRoute = require('./lib/routes/reports');
 var reportsIdRoute = require('./lib/routes/reports-id');
 
-Glue.compose(require('./config/manifest.json'), function (err, server) {
+var manifest = require('./config/manifest.json');
+var options = {
+  relativeTo: __dirname
+};
+
+Glue.compose(manifest, options, function (err, server) {
   server.route(reportsRoute);
   server.route(reportsIdRoute);
 
